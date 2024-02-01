@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Google side panel extension</title>
-    <link rel="stylesheet" type="text/css" href="style.css"
+    <title>Video QnA</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h1>Video Analysis Help</h1>
-      </div>
-      <div class="body">
-        <p class="message">Hello</p>
-        <p class="message user_message">Hi</p>
-      </div>
-      <div class="footer">
-        <form>
-          <input type="text" name="">
-          <button>SEND</button>
-        </form>
+    <div class="chatbot">
+      <header>
+        <h2>Video Analysis Help</h2>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Hi There! <br> How may I assist you?</p>
+        </li>
+        <li class="chat outgoing">
+          <p>Idk what can you do?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Enter your message here..."></textarea>
+        <span id="send-btn" class="material-symbols-outlined">send</span>
       </div>
     </div>
   </body>
