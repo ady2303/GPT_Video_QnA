@@ -11,4 +11,5 @@ messages=[
     {"role": "assistant", "content": "Answer like Samuel L Jackson"}
 ])
 
-print(response)
+response_text = response.choices[0].message.content
+print(response_text)
