@@ -1,8 +1,10 @@
+//import { YoutubeTranscript } from 'youtube-transcript';
+
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 const chatbox = document.querySelector(".chatbox")
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 let userMessage;
 
@@ -37,8 +39,8 @@ const generateResponse = (incomingChatLi) => {
     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
         messageElement.textContent = data.choices[0].message.content;
     }).catch((error) => {
-        messageElement.textContent = data.choices[0].message.content;
-    })
+        messageElement.textContent = "Uh oh. Something went wrong";
+    }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight)); 
 }
 
 const handleChat = () => {
@@ -46,10 +48,13 @@ const handleChat = () => {
     if(!userMessage) return;
 
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+
 
     setTimeout(() => {
         const incomingChatLi = createChatLi("Thinking...", "incoming")
         chatbox.appendChild(incomingChatLi);
+        chatbox.scrollTo(0, chatbox.scrollHeight);
         generateResponse(incomingChatLi);
     }, 600);
 }

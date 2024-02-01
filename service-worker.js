@@ -1,9 +1,16 @@
 const YOUTUBE_ORIGIN = 'https://www.youtube.com';
 
+let yt_url;
+
 // Allows users to open the side panel by clicking on the action toolbar icon
 chrome.sidePanel
   .setPanelBehavior({ openPanelOnActionClick: true })
   .catch((error) => console.error(error));
+
+chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    yt_url = tabs[0].url;
+    // use `url` here inside the callback because it's asynchronous!
+});
 
 chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
   if (!tab.url) return;
